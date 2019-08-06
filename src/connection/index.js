@@ -5,7 +5,7 @@ const conn = mysql.createConnection(
         user: 'devuser',
         password: '12345',
         host: 'localhost',
-        database: 'okra',
+        database: 'ujianbackend',
         port : 3306
     }
 )
