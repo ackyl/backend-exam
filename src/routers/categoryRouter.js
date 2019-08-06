@@ -1,11 +1,10 @@
 const router = require('express').Router()
 const conn = require('../connection')
 
-
-//ADD MOVIE
-router.post('/movies', (req, res) => {
-    const sql = `INSERT INTO movies SET ?`
-    const sql2 = `SELECT * FROM movies WHERE id = ?`
+//ADD category
+router.post('/categories', (req, res) => {
+    const sql = `INSERT INTO categories SET ?`
+    const sql2 = `SELECT * FROM categories WHERE id = ?`
     const data = req.body
 
     // INSERT
@@ -22,9 +21,9 @@ router.post('/movies', (req, res) => {
     })
 })
 
-//UPDATE MOVIE
-router.patch('/movies/:id', (req, res) => {
-    const sql = `UPDATE movies SET ? WHERE id = ${req.params.id}`
+//UPDATE category
+router.patch('/categories/:id', (req, res) => {
+    const sql = `UPDATE categories SET ? WHERE id = ${req.params.id}`
     const data = req.body
 
     conn.query(sql, data, (err, result) => {
@@ -34,9 +33,9 @@ router.patch('/movies/:id', (req, res) => {
     })
 })
 
-//DELETE MOVIE
-router.delete('/movies/:id', (req, res) => {
-    const sql = `DELETE FROM movies WHERE id = ?`
+//DELETE category
+router.delete('/categories/:id', (req, res) => {
+    const sql = `DELETE FROM categories WHERE id = ?`
     const data = req.params.id
 
     conn.query(sql, data,  (err, result) => {
@@ -46,9 +45,9 @@ router.delete('/movies/:id', (req, res) => {
     })
 })
 
-//SHOW ALL MOVIES
-router.get('/movies', (req, res) => {
-    const sql = `SELECT id AS Id, nama as Nama, tahun as Tahun, deskripsi as Description FROM movies`
+//SHOW ALL categories
+router.get('/categories', (req, res) => {
+    const sql = `SELECT id as Id, nama as Nama FROM categories`
     
     conn.query(sql, (err, result) => {
         if(err) return res.send(err)
